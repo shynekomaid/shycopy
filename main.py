@@ -1,8 +1,10 @@
 import posixpath
 from yaml import load as y_load, dump as y_dump
-from os.path import isfile
+from os.path import isfile, dirname, realpath
 from os import system as run
+import time
 
+selfpath = dirname(realpath(__file__))
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -18,14 +20,14 @@ def scp(address, port, username, password, local_root, local_path, remote_root, 
 
 
 try:
-    with open("settings.yml", "r") as f:
+    with open(selfpath + "/settings.yml", "r") as f:
         settings = y_load(f.read(), Loader=Loader)
 except:
     print("\033[91m\033[1m" + "No access to `settings.yml` file!" + "\033[0m")
     exit(1)
 
-if "project" in settings and isfile("projects/" + settings["project"] + ".yml") or isfile(
-        "projects/" + settings["project"]):
+if "project" in settings and isfile(selfpath + "/projects/" + settings["project"] + ".yml") \
+        or isfile(selfpath + "/projects/" + settings["project"]):
     project_file = "projects/" + settings["project"]
     if not project_file.endswith(".yml"):
         project_file += ".yml"
@@ -34,13 +36,13 @@ else:
 
 if project_file != "projects/default.yml":
     try:
-        with open("projects/default.yml", "r") as f:
+        with open(selfpath + "/projects/default.yml", "r") as f:
             default_project = y_load(f.read(), Loader=Loader)
     except:
         print("\033[91m\033[1m" + "No access to `default` project file!" + "\033[0m")
         exit(1)
     try:
-        with open(project_file, "r") as f:
+        with open(selfpath + "/" +project_file, "r") as f:
             project = y_load(f.read(), Loader=Loader)
     except:
         print(
@@ -50,7 +52,7 @@ if project_file != "projects/default.yml":
     project = default_project
 else:
     try:
-        with open("projects/default.yml", "r") as f:
+        with open(selfpath + "/projects/default.yml", "r") as f:
             project = y_load(f.read(), Loader=Loader)
     except:
         print("\033[91m\033[1m" + "No access to `default` project file!" + "\033[0m")
