@@ -1,0 +1,7 @@
+user: testlogin
+password: testpass
+address: 192.168.1.20
+local_root: /
+remote_root: /
+paths:
+  - /file /file
