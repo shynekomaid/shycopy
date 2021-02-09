@@ -25,3 +25,5 @@ pip3 install PyYAML
 2. Change project key in shycopy/settings.yml
 3. Launch using ```python3 shycopy/main.py```
 4. You can hang on the hotkey ```python3 shycopy/main.py``` to copy automated.
+5. ?????????
+6. PROFIT
