@@ -1,17 +1,19 @@
 import posixpath
+from types import DynamicClassAttribute
 from yaml import load as y_load, dump as y_dump
 from os.path import isfile, dirname, realpath
-from os import system as run
+from os import kill, system as run
 import time
 
-selfpath = dirname(realpath(__file__))
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Loader, Dumperx
+
+selfpath = dirname(realpath(__file__))
 
 
-def scp(address, port, usernamde, password, local_root, local_path, remote_root, remote_path, ssh_private_key):
+def scp(address, port, username, password, local_root, local_path, remote_root, remote_path, ssh_private_key):
     if not ssh_private_key:
         scp_cmd = f"sshpass -p '{password}' scp -P {port} -r {local_root}/{local_path} {username}@{address}:{remote_root}/{remote_path}"
     else:
