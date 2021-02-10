@@ -11,7 +11,7 @@ except ImportError:
     from yaml import Loader, Dumper
 
 
-def scp(address, port, username, password, local_root, local_path, remote_root, remote_path, ssh_private_key):
+def scp(address, port, usernamde, password, local_root, local_path, remote_root, remote_path, ssh_private_key):
     if not ssh_private_key:
         scp_cmd = f"sshpass -p '{password}' scp -P {port} -r {local_root}/{local_path} {username}@{address}:{remote_root}/{remote_path}"
     else:
@@ -39,10 +39,11 @@ if project_file != "projects/default.yml":
         with open(selfpath + "/projects/default.yml", "r") as f:
             default_project = y_load(f.read(), Loader=Loader)
     except:
-        print("\033[91m\033[1m" + "No access to `default` project file!" + "\033[0m")
+        print("\033[91m\033[1m" +
+              "No access to `default` project file!" + "\033[0m")
         exit(1)
     try:
-        with open(selfpath + "/" +project_file, "r") as f:
+        with open(selfpath + "/" + project_file, "r") as f:
             project = y_load(f.read(), Loader=Loader)
     except:
         print(
@@ -55,7 +56,8 @@ else:
         with open(selfpath + "/projects/default.yml", "r") as f:
             project = y_load(f.read(), Loader=Loader)
     except:
-        print("\033[91m\033[1m" + "No access to `default` project file!" + "\033[0m")
+        print("\033[91m\033[1m" +
+              "No access to `default` project file!" + "\033[0m")
         exit(1)
 
 for i in project["paths"]:
