@@ -20,6 +20,7 @@ sudo apt install python3 notify-osd sshpass
 pip3 install PyYAML
 ```
 
+
 ## Setup
 1. Go to shycopy/projects and copy test.yml to another_file.yml in shycopy/projects folder **dont touch defautl.yml**
 2. Change project key in shycopy/settings.yml
