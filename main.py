@@ -6,7 +6,7 @@ from os import kill, system as run
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumperx
+    from yaml import Loader, Dumper
 
 selfpath = dirname(realpath(__file__))
 
