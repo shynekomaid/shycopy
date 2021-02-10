@@ -1,9 +1,7 @@
 import posixpath
-from types import DynamicClassAttribute
 from yaml import load as y_load, dump as y_dump
 from os.path import isfile, dirname, realpath
 from os import kill, system as run
-import time
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
